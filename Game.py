@@ -1,4 +1,3 @@
-from operator import truediv
 import pygame
 from classes.backgroundclass import Background
 from classes.bulletsclass import  Bullets
@@ -6,10 +5,13 @@ from classes.cameraclass import Camera
 from  classes.enemyclass import Enemies
 from  classes.plantclass import Plants
 from  classes.pointerclass import Pointer
+from newwavespawner import spawnnewwave
+import random
 #all the classes imported
 from variables import *
 from os import path
 #from camera import *
+spawnnum =0 
 # Initialize the game engine
 pygame.init()
 # Set the height and width of the screen
@@ -89,6 +91,8 @@ while not done:
         enemies_hit_list = pygame.sprite.spritecollide(bullet, enemies_list, True)
         if len(enemies_hit_list) > 0:
             bullet.kill()
+        elif bullet.x > 9: #so that the bullets can't kill enemies spawning in
+            bullet.kill()
     #Make the bullets shoot on timer
     bullettimer += 1
     if bullettimer == 180:
@@ -107,6 +111,9 @@ while not done:
         timer -= 1
         timermin = timer // 60
         timersec = timer % 60
+    #spawn new enemies
+    if timerfps % 12 == 0: 
+        spawnnewwave(timerfps)
     pygame.display.flip()
     # Check the list of collisions
     clock.tick(60)

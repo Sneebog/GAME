@@ -1,4 +1,4 @@
-from classes.entityclass import Entity
+from classes.entityclass import Entity #inherits from entity 
 import pygame
 from variables import TILESIZE, RED
 class Bullets(Entity):
@@ -15,4 +15,4 @@ class Bullets(Entity):
         self.rect.x=self.x*TILESIZE  #multiply the x and y by tilesize to draw on screen
         self.rect.y=(self.y*TILESIZE) + 50
     def move(self, x_offset):
-        self.x += x_offset
+        self.x += x_offset #make the bullet move at a constant speed
