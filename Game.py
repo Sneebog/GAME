@@ -73,14 +73,15 @@ while not done:
     if timerfps % 12 == 0: 
         spawnnewwave(timerfps)
     #Make the enemie and bullet move
-    for enemy in enemies_list:
-        enemy.move(-0.005)
-    for bullet in bullets_list:
-        bullet.move(0.01)
+    # for enemy in enemies_list:
+    #     enemy.move(-0.005)
+    # for bullet in bullets_list:
+    #     bullet.move(0.01)
     #Make the bullets and the enemies kill on collision
     for bullet in bullets_list:
         enemies_hit_list = pygame.sprite.spritecollide(bullet, enemies_list, True)
         if enemies_hit_list:
+            
             bullet.kill()
         elif bullet.x > 10: #so that the bullets can't kill enemies spawning in
             bullet.kill()
@@ -106,7 +107,6 @@ while not done:
     pygame.display.flip()
     # Check the list of collisions
 
-    print("bugs in your skin")
 
     clock.tick(60)
 # Be IDLE friendly

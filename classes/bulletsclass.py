@@ -11,8 +11,8 @@ class Bullets(Entity):
         self.rect = self.image.get_rect()
         self.x = x
         self.y = y
+        self.x_offset = 0.01
     def update(self):
         self.rect.x=self.x*TILESIZE  #multiply the x and y by tilesize to draw on screen
         self.rect.y=(self.y*TILESIZE) + 50
-    def move(self, x_offset):
-        self.x += x_offset #make the bullet move at a constant speed
+        self.x += self.x_offset #make the bullet move at a constant speed
