@@ -22,4 +22,4 @@ class Pointer(pygame.sprite.Sprite):
         if squarecheck == True:
             plant = Plants(x, y, tilesize)
             all_sprites_list.add(plant)
-            plant_list.append(plant)
+            plant_list.add(plant)

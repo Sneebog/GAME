@@ -26,6 +26,6 @@ all_sprites_list = pygame.sprite.Group() #group for all objects
 enemies_hit_list = pygame.sprite.Group() #group for all enemies that have been killed
 bullets_hit_list = pygame.sprite.Group() #group for all enemies that have been killed
 enemies_list = pygame.sprite.Group() #group for all enemies
-plant_list = []#group for all plants
+plant_list = pygame.sprite.Group()#group for all plants
 bullets_list = pygame.sprite.Group() #group for all bullets
 
