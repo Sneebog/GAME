@@ -1,7 +1,6 @@
 import pygame
 from classes.backgroundclass import Background
 from classes.bulletsclass import  Bullets
-#from classes.cameraclass import Camera
 from  classes.enemyclass import Enemies
 from  classes.plantclass import Plants
 from  classes.pointerclass import Pointer
@@ -9,8 +8,6 @@ from newwavespawner import spawnnewwave
 import random
 #all the classes imported
 from variables import *
-from os import path
-#from camera import *
 spawnnum =0 
 # Initialize the game engine
 pygame.init()
@@ -26,7 +23,6 @@ outfit = pygame.font.SysFont('Outfit-Bold.ttf', 35) #font used for text in score
 pygame.key.set_repeat(500,100)  #lets held down key repeat
 #make the background and set the camera on the center
 background = Background("gamebackground.jpg", [0,0])
-#camera=Camera(1,1)
 #create the user's pointer
 pointer = Pointer(RED, 20, 20)
 all_sprites_list.add(pointer) 
@@ -61,8 +57,6 @@ while not done:
     screen.blit(score_board, (855, 60))
     screen.blit(Timer, (855, 40))
     all_sprites_list.update()
-    plant_list.update()
-    plant_list.draw(screen)
     all_sprites_list.draw(screen)
     #Track the mouse to the pointer
     pos = pygame.mouse.get_pos()
@@ -73,22 +67,29 @@ while not done:
     #spawn new enemies
     if timerfps % 12 == 0: 
         spawnnewwave(timerfps)
-    #Make the bullets and the enemies kill on collision
-    pygame.sprite.groupcollide(enemies_list, bullets_list, True,True)
-    for bullet in bullets_list:
-        if bullet.x > 10:   #so that the bullets can't kill enemies spawning in
-            bullet.kill
-    #Make the bullets shoot on timer
-    # bullettimer += 1
-    # if bullettimer == 180:
-    #     bullettimer = 0
-    #     for plant in plant_list:
-    #         plant.shoot()
-    #Check Gameover 
+    #enemy checks 
     for enemy in enemies_list:
+        #Make the bullets and the enemies kill on collision
+        if pygame.sprite.spritecollide(enemy,bullets_list,True): #kills the bullets
+            score  = enemy.damage(score) #damages the enemy and also calculates the score for the scoreboard
+        #Gameover check for the enemies
         gameovercheck = enemy.gameover()
         if gameovercheck == True:
             done = True
+
+    # pygame.sprite.groupcollide(enemies_list, bullets_list, False, True)
+    # for bullet in bullets_list:
+    #     if bullet.x > 10:   #so that the bullets can't kill enemies spawning in
+    #         bullet.kill
+
+
+    #Make the bullets shoot on timer
+    bullettimer += 1
+    if bullettimer == 180:
+        bullettimer = 0
+        for plant in plant_list:
+            plant.shoot()
+
     #Timer on the scoreboard
     timerfps += 1
     if timerfps == 60:
@@ -96,6 +97,7 @@ while not done:
         timer -= 1
         timermin = timer // 60
         timersec = timer % 60
+
     pygame.display.flip()
     # Check the list of collisions
 

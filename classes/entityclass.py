@@ -1,6 +1,6 @@
 from variables import WHITE, TILESIZE
 import pygame
-class Entity(pygame.sprite.Sprite):
+class Entity(pygame.sprite.Sprite): #creation of a class used as a base for other sprites to inherit from
     def __init__(self, x, y, TILESIZE):
         pygame.sprite.Sprite.__init__(self)
         self.image=pygame.Surface((TILESIZE, TILESIZE))

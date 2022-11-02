@@ -7,11 +7,12 @@ class Bullets(Entity):
         self.image = pygame.Surface([width, height])
         self.width = width
         self.height = height
-        self.image.fill(RED)
+        self.image.fill(RED) #colour of the bullet
         self.rect = self.image.get_rect()
         self.x = x
         self.y = y
-        self.x_offset = 0.01
+        self.x_offset = 0.01 #offset is the speed that the bullet will move at
+
     def update(self):
         self.rect.x=self.x*TILESIZE  #multiply the x and y by tilesize to draw on screen
         self.rect.y=(self.y*TILESIZE) + 50
