@@ -17,7 +17,7 @@ timerfps= 0
 timer = 120
 timersec = 0
 timermin = 0
-bullettimer = 0
+#bullettimer = 0
 wavenum = 1
 #score and highscore variables
 score = 0 

@@ -21,5 +21,4 @@ class Pointer(pygame.sprite.Sprite):
                 squarecheck == False
         if squarecheck == True:
             plant = Plants(x, y, tilesize)
-            all_sprites_list.add(plant)
             plant_list.add(plant)

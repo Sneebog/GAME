@@ -1,7 +1,7 @@
 import pygame
 from classes.backgroundclass import Background
 from classes.bulletsclass import  Bullets
-from classes.cameraclass import Camera
+#from classes.cameraclass import Camera
 from  classes.enemyclass import Enemies
 from  classes.plantclass import Plants
 from  classes.pointerclass import Pointer
@@ -26,7 +26,7 @@ outfit = pygame.font.SysFont('Outfit-Bold.ttf', 35) #font used for text in score
 pygame.key.set_repeat(500,100)  #lets held down key repeat
 #make the background and set the camera on the center
 background = Background("gamebackground.jpg", [0,0])
-camera=Camera(1,1)
+#camera=Camera(1,1)
 #create the user's pointer
 pointer = Pointer(RED, 20, 20)
 all_sprites_list.add(pointer) 
@@ -61,8 +61,9 @@ while not done:
     screen.blit(score_board, (855, 60))
     screen.blit(Timer, (855, 40))
     all_sprites_list.update()
-    for sprite in all_sprites_list:
-        screen.blit(sprite.image, camera.apply(sprite))
+    plant_list.update()
+    plant_list.draw(screen)
+    all_sprites_list.draw(screen)
     #Track the mouse to the pointer
     pos = pygame.mouse.get_pos()
     pointer.rect.center = pygame.mouse.get_pos()
