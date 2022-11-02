@@ -74,11 +74,15 @@ while not done:
         spawnnewwave(timerfps)
     #Make the bullets and the enemies kill on collision
     # for bullet in bullets_list:
-    #     enemies_hit_list[] = pygame.sprite.spritecollide(bullet, enemies_list, True)
-        # if enemies_hit_list:   
-        #     bullet.kill()
-        # elif bullet.x > 10: #so that the bullets can't kill enemies spawning in
-        #     bullet.kill()
+    #     enemies_hit_list = pygame.sprite.spritecollide(bullet, enemies_list, True)
+    #     if enemies_hit_list:   
+    #         bullet.kill()
+    # if bullet.x > 10: #so that the bullets can't kill enemies spawning in
+    #         bullet.kill()
+    pygame.sprite.groupcollide(enemies_list, bullets_list, True,True)
+    for bullet in bullets_list:
+        if bullet.x > 10: 
+            bullet.kill
     #Make the bullets shoot on timer
     bullettimer += 1
     if bullettimer == 180:
