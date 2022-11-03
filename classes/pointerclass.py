@@ -18,7 +18,7 @@ class Pointer(pygame.sprite.Sprite):
         x = mousex // tilesize #calculate where to place it, uses // to ensure plant fits in the square perfectly 
         y = mousey // tilesize
         squarecheck = True
-        #checks if there is alreadu a plant in the square
+        #checks if there is already a plant in the square
         for placed in plant_list:
             if placed.x == x and placed.y == y: 
                 squarecheck == False

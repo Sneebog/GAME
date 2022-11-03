@@ -28,4 +28,4 @@ bullets_hit_list = pygame.sprite.Group() #group for all enemies that have been k
 enemies_list = pygame.sprite.Group() #group for all enemies
 plant_list = pygame.sprite.Group()#group for all plants
 bullets_list = pygame.sprite.Group() #group for all bullets
-
+heldplant = pygame.sprite.GroupSingle()

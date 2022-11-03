@@ -11,7 +11,8 @@ class Plants(Entity):
 
     def damage(self):
         self.health -= 20 
-        if self.health < 0: #if the plant is zero health then it dies
+        print(self.health)
+        if self.health <= 0: #if the plant is zero health then it dies
             self.kill() 
 
     def update(self):
