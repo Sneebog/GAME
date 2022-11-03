@@ -16,12 +16,12 @@ class Game():
         #make the background and set the camera on the center
         self.background = Background("gamebackground.jpg", [0,0])
         self.score = 0
-        self.timerfps= 0
         self.timer = 120
         self.timersec = 0
         self.timermin = 0
         self.bullettimer = 0
         self.wavenum = 1
+        self.timerfps = 0
         #determines when to close the game
         self.done = False
         
@@ -43,7 +43,7 @@ class Game():
         clock = pygame.time.Clock()
         pygame.mouse.set_visible(False)
         # Loop as long as done == False
-        
+
         while not self.done:
             for event in pygame.event.get():  # User did something
                 if event.type == pygame.QUIT:  # If user clicked close
