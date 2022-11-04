@@ -1,11 +1,12 @@
 import pygame
 from classes.backgroundclass import Background 
 from variables import *
+from classes.buttons import buttons
 class Menu():
     def __init__(self):
         #set the size of the screen
         self.size = (600, 800)
-        self.background = Background("menubackground.jpg", [0,0])
+        self.background = Background("gravebackground.jpg", [0,0])
         self.done = False
         #allow game to finish
 
@@ -17,16 +18,21 @@ class Menu():
         pygame.display.set_caption('Tower Defense Main Menu') #set the caption of the game window
         clock = pygame.time.Clock()
         pygame.key.set_repeat(500,100)  #lets held down key repeat
+        redbug = buttons(200, 400, 200, 50 )
+        menu_sprites_list.add(redbug)
+        print(menu_sprites_list)
         while not self.done:
             for event in pygame.event.get():  # User did something
                 if event.type == pygame.QUIT:  # If user clicked close
                     self.done = True  # Flag that we are done so we exit this loo  
                 elif event.type == pygame.mouse.get_pressed():
                     click = True 
-                screen.fill(WHITE)
-                #set the background image
-                screen.blit(self.background.image, self.background.rect)
-                pygame.display.flip()
+            screen.fill(WHITE)
+            #set the background image
+            screen.blit(self.background.image, self.background.rect)
+            menu_sprites_list.update()
+            menu_sprites_list.draw(screen)
+            pygame.display.flip()
             # Check the list of collisions
 
 

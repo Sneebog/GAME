@@ -29,3 +29,4 @@ enemies_list = pygame.sprite.Group() #group for all enemies
 plant_list = pygame.sprite.Group()#group for all plants
 bullets_list = pygame.sprite.Group() #group for all bullets
 heldplant = pygame.sprite.GroupSingle()
+menu_sprites_list = pygame.sprite.Group() #group for all objects in menu
