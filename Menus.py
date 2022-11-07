@@ -31,15 +31,16 @@ class Menu():
         menu_sprites_list.add(startbutton, optionsbutton, quitbutton)
       
         while not self.done:
+
             for event in pygame.event.get():  # User did something
                 if event.type == pygame.QUIT:  # If user clicked close
-                    self.done = True  # Flag that we are done so we exit this loo  
-                elif event.type == pygame.mouse.get_pressed():
-                    self.click = True 
-            mouse_buttons = pygame.mouse.get_pressed()
-            if mouse_buttons[0] == True:
+                    self.done = True  # Flag that we are done so we exit this loop
+
+            mouse_buttons = pygame.mouse.get_pressed() #get the mouse inputs
+            pos = pygame.mouse.get_pos() #get the mouse position
+            if mouse_buttons[0] == True: #if left click is clicked set flag click to true
                 self.click = True
-                print("buh")
+            
             screen.fill(WHITE)
             #set the background image
             screen.blit(self.background.image, self.background.rect)
@@ -50,7 +51,8 @@ class Menu():
 
             #Check if the player has clicked a button
             if self.click == True:
-                menu_sprites_list.checkclick() #if the mouse is on the buttons position the button will have click set to true
+                for button in menu_sprites_list: #check every button in list
+                        button.checkclick(pos[0], pos[1]) #if the mouse is on the buttons position the button will have click set to true
             #check the buttons that are clicked
             if startbutton.click == True:
                 self.outcome = 1 #game starts
@@ -69,4 +71,5 @@ class Menu():
         pygame.quit()
         return self.outcome
 menu = Menu()
-menu.run()
+outcome = menu.run()
+print(outcome)
