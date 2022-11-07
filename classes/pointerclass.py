@@ -10,7 +10,7 @@ class Pointer(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.width = width
         self.height = height
-        
+    
     def update(self):
         self.rect.center = pygame.mouse.get_pos() #moves the mouse to the mouses position (the center of ir)
 

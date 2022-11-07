@@ -1,7 +1,7 @@
 import pygame
 from classes.backgroundclass import Background 
 from variables import *
-from classes.buttons import buttons
+from classes.buttons import buttons, Textbuttons
 class Menu():
     def __init__(self):
         #set the size of the screen
@@ -16,11 +16,13 @@ class Menu():
         #set the screen etc
         screen = pygame.display.set_mode(self.size)
         pygame.display.set_caption('Tower Defense Main Menu') #set the caption of the game window
+        #create fonts
+        outfit = pygame.font.SysFont('Outfit-Bold.ttf', 35) #font used for text in scoreboard     
         clock = pygame.time.Clock()
         pygame.key.set_repeat(500,100)  #lets held down key repeat
-        redbug = buttons(200, 400, 200, 50 )
+        redbug = Textbuttons(200, 400, 200, 50, "hello", outfit)
         menu_sprites_list.add(redbug)
-        print(menu_sprites_list)
+      
         while not self.done:
             for event in pygame.event.get():  # User did something
                 if event.type == pygame.QUIT:  # If user clicked close
@@ -30,8 +32,9 @@ class Menu():
             screen.fill(WHITE)
             #set the background image
             screen.blit(self.background.image, self.background.rect)
-            menu_sprites_list.update()
+            menu_sprites_list.update(screen)
             menu_sprites_list.draw(screen)
+
             pygame.display.flip()
             # Check the list of collisions
 

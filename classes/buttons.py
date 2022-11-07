@@ -12,3 +12,14 @@ class buttons(pygame.sprite.Sprite):
     def update(self):
         self.rect.x=self.x
         self.rect.y=self.y
+
+class Textbuttons(buttons):
+    def __init__(self, x, y, width, height, Textinput, font):
+        super().__init__(x, y, width, height)
+        self.textInput = Textinput
+        self.font = font
+        self.text = self.font.render(self.textInput, True, GREY)
+
+    def update(self, screen):
+        super().update()
+        screen.blit(self.text, (self.x, self.y) )
