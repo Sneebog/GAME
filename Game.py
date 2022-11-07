@@ -81,7 +81,7 @@ class Game():
             for enemy in enemies_list:
                 #Make the bullets and the enemies kill on collision
                 if pygame.sprite.spritecollide(enemy,bullets_list,True): #kills the bullets
-                    self.score  = enemy.damage(self.score) #damages the enemy and also calculates the score for the scoreboard
+                    self.score = enemy.damage(self.score) #damages the enemy and also calculates the score for the scoreboard
                 for plant in plant_list:
                     heldplant.add(plant)
                     if pygame.sprite.spritecollide(enemy, heldplant, False):
@@ -116,8 +116,6 @@ class Game():
                 self.timersec = self.timer % 60
 
             pygame.display.flip()
-            # Check the list of collisions
-
 
             clock.tick(60)
         # Be IDLE friendly
