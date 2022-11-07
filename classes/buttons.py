@@ -20,6 +20,9 @@ class Textbuttons(buttons):
         self.font = font
         self.text = self.font.render(self.textInput, True, GREY)
 
-    def update(self, screen):
+    def update(self):
         super().update()
+        #screen.blit(self.text, (self.x, self.y) )
+        
+    def textdraw(self, screen):
         screen.blit(self.text, (self.x, self.y) )

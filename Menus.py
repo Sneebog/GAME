@@ -20,8 +20,8 @@ class Menu():
         outfit = pygame.font.SysFont('Outfit-Bold.ttf', 35) #font used for text in scoreboard     
         clock = pygame.time.Clock()
         pygame.key.set_repeat(500,100)  #lets held down key repeat
-        redbug = Textbuttons(200, 400, 200, 50, "hello", outfit)
-        menu_sprites_list.add(redbug)
+        block = Textbuttons(200, 400, 200, 50, "hello", outfit)
+        menu_sprites_list.add(block)
       
         while not self.done:
             for event in pygame.event.get():  # User did something
@@ -32,8 +32,9 @@ class Menu():
             screen.fill(WHITE)
             #set the background image
             screen.blit(self.background.image, self.background.rect)
-            menu_sprites_list.update(screen)
+            menu_sprites_list.update()
             menu_sprites_list.draw(screen)
+            block.textdraw(screen)
 
             pygame.display.flip()
             # Check the list of collisions
