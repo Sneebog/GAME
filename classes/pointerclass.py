@@ -1,6 +1,6 @@
 from operator import truediv
 import pygame
-from classes.plantclass import Plants
+from classes.plantclass import Plants, Sunflowerplant
 from variables import *
 class Pointer(pygame.sprite.Sprite):
     def __init__(self, color, width, height):
@@ -12,7 +12,7 @@ class Pointer(pygame.sprite.Sprite):
         self.height = height
     
     def update(self):
-        self.rect.center = pygame.mouse.get_pos() #moves the mouse to the mouses position (the center of ir)
+        self.rect.center = pygame.mouse.get_pos() #moves the mouse to the mouses position (the center of it)
 
     def createPlant(self, mousex, mousey, tilesize):
         x = mousex // tilesize #calculate where to place it, uses // to ensure plant fits in the square perfectly 
@@ -20,14 +20,15 @@ class Pointer(pygame.sprite.Sprite):
         squarecheck = True
         #checks if there is already a plant in the square
         
-        for placed in plant_list:
+        for placed in plant_list: 
             if placed.x == x and placed.y == y: 
                     squarecheck == False
 
-        if x == 0 or y == 0:
+        if x == 0 or y == 0: #ensures plants cant be placed on the top or the back line
             squarecheck = False
 
         if squarecheck == True: #Means the plant can be placed there
-            plant = Plants(x, y, tilesize)
+            #plant = Plants(x, y, tilesize)
+            plant = Sunflowerplant(x, y, tilesize)
             plant_list.add(plant)
             all_sprites_list.add(plant)

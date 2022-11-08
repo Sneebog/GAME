@@ -15,6 +15,7 @@ class Game():
         #make the background and set the camera on the center
         self.background = Background("gamebackground.jpg", [0,0])
         self.score = 0
+        self.sun = 0
         self.timer = 120
         self.timersec = 0
         self.timermin = 0

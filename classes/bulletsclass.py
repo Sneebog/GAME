@@ -17,3 +17,24 @@ class Bullets(Entity):
         self.rect.x=self.x*TILESIZE  #multiply the x and y by tilesize to draw on screen
         self.rect.y=(self.y*TILESIZE) + 50
         self.x += self.x_offset #make the bullet move at a constant speed
+
+class SunBullets(Bullets):
+    def __init__(self, x, y, width, height):
+        super().__init__(x, y, width, height)
+        self.startx = self.x
+        self.starty = self.y
+        self.y_offset = -0.02
+        self.yflag = False
+
+    def update(self):
+        self.rect.x=self.x*TILESIZE  #multiply the x and y by tilesize to draw on screen
+        self.rect.y=(self.y*TILESIZE) + 50
+        if self.x <= (self.startx + 1):
+            self.x += self.x_offset
+
+        if self.y >= (self.starty + 1) and self.yflag == False:
+            self.y += self.y_offset
+        else:
+            self.yflag = True
+            self.y -= self.y_offset
+        
