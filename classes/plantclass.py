@@ -1,12 +1,13 @@
 from classes.entityclass import Entity
-from variables import all_sprites_list, bullets_list, RED, PURPLE
+from variables import all_sprites_list, bullets_list, RED, PURPLE, sunbullets_list
 from classes.bulletsclass import Bullets, SunBullets
+import random
 
 class Plants(Entity):
     def __init__(self, x, y , tilesize):
         super().__init__(x,y, tilesize)
         self.image.fill(RED)
-        self.bullettimer = 180 #Timer for the plant to constantly shoot bullet
+        self.bullettimer = random.randint(0, 180) #Timer for the plant to constantly shoot bullet
         self.health = 100 # total health for the plant 
 
     def damage(self):
@@ -44,4 +45,4 @@ class Sunflowerplant(Plants):
         #sun creation 
         sun = SunBullets(self.x, self.y, 10, 10)
         all_sprites_list.add(sun)
-        bullets_list.add(sun)
+        sunbullets_list.add(sun)

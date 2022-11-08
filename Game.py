@@ -103,9 +103,13 @@ class Game():
             #Make the bullets shoot on timer
             self.bullettimer += 1
             if self.bullettimer == 180:
-                self.bullettimer = 0
+                #self.bullettimer = 0
                 for plant in plant_list:
                     plant.shoot()
+            for sun in sunbullets_list:
+                if sun.timer >= 10:
+                    sun.kill
+
 
             #Timer on the scoreboard
             self.timerfps += 1

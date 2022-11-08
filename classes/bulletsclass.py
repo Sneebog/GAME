@@ -27,10 +27,12 @@ class SunBullets(Bullets):
         self.y_offset = -0.02
         self.yflag = False
         self.xflag = False
-
+        self.timer = 0
+        
     def update(self):
         self.rect.x=self.x*TILESIZE  #multiply the x and y by tilesize to draw on screen
         self.rect.y=(self.y*TILESIZE) + 50
+        #make the sun move up then down, uses the flags to stop it moving and to change directions
         if self.x <= (self.startx + 1.5):
             self.x += self.x_offset
         else:
@@ -42,4 +44,5 @@ class SunBullets(Bullets):
             else:
                 self.yflag = True
                 self.y -= self.y_offset / 2
-        
+        #timer for the lifespan of the sun
+        self.timer += 1
