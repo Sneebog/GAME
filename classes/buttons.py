@@ -1,12 +1,12 @@
 import pygame
-from variables import *
+
 class buttons(pygame.sprite.Sprite):
-    def __init__(self, x, y, width, height):
+    def __init__(self, x, y, width, height, color):
         pygame.sprite.Sprite.__init__(self)
         self.width = width
         self.height = height
         self.image = pygame.Surface([self.width, self.height])
-        self.image.fill(GREY)
+        self.image.fill(color)
         self.rect=self.image.get_rect()
         self.x = x
         self.y = y
@@ -23,11 +23,11 @@ class buttons(pygame.sprite.Sprite):
 
 
 class Textbuttons(buttons):
-    def __init__(self, x, y, width, height, Textinput, font):
-        super().__init__(x, y, width, height)
+    def __init__(self, x, y, width, height,color, Textinput, font, textcolour):
+        super().__init__(x, y, width, height, color)
         self.textInput = Textinput
         self.font = font
-        self.text = self.font.render(self.textInput, True, RED) #render the text to be later displayed
+        self.text = self.font.render(self.textInput, True, textcolour) #render the text to be later displayed
         self.xcenter = self.x + ((self.width / 2) - 35) #used to center the buttons
         self.ycenter = self.y + ((self.height / 2) - 15)
 

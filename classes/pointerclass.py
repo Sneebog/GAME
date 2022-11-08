@@ -28,7 +28,7 @@ class Pointer(pygame.sprite.Sprite):
             squarecheck = False
 
         if squarecheck == True: #Means the plant can be placed there
-            #plant = Plants(x, y, tilesize)
-            plant = Sunflowerplant(x, y, tilesize)
+            plant = Plants(x, y, tilesize)
+            #plant = Sunflowerplant(x, y, tilesize)
             plant_list.add(plant)
             all_sprites_list.add(plant)
