@@ -70,6 +70,50 @@ class Menu():
             clock.tick(60)
         pygame.quit()
         return self.outcome
-menu = Menu()
-outcome = menu.run()
-print(outcome)
+        
+class OptionsMenu(Menu):
+    def __init__(self):
+        super().__init__()
+        self.background = Background("gamebackground.jpg", [0,0])
+    
+    def run(self):
+        # Initialize the game engine
+        pygame.init()
+        #set the screen etc
+        screen = pygame.display.set_mode(self.size)
+        pygame.display.set_caption('Tower Defense Options Menu') #set the caption of the game window
+        #create fonts
+        #outfit = pygame.font.SysFont('Outfit-Bold.ttf', 35) #font used for text in scoreboard     
+        clock = pygame.time.Clock()
+        pygame.key.set_repeat(500,100)  #lets held down key repeat
+
+        while not self.done:
+
+            for event in pygame.event.get():  # User did something
+                if event.type == pygame.QUIT:  # If user clicked close
+                    self.done = True  # Flag that we are done so we exit this loop
+
+            mouse_buttons = pygame.mouse.get_pressed() #get the mouse inputs
+            pos = pygame.mouse.get_pos() #get the mouse position
+            if mouse_buttons[0] == True: #if left click is clicked set flag click to true
+                self.click = True
+            
+            screen.fill(WHITE)
+            #set the background image
+            #screen.blit(self.background.image, self.background.rect)
+    
+            pygame.display.flip()
+
+            clock.tick(60)
+        pygame.quit()
+        return self.outcome
+
+class Gameoverscreen(Menu):
+    def __init__(self):
+        super().__init__()
+
+    def run(self):
+        pygame.init()
+
+option_menu = OptionsMenu()
+option_menu.run()

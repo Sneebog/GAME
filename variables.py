@@ -22,7 +22,7 @@ bullettimer = 0
 wavenum = 1
 #score and highscore variables
 score = 0 
-
+spawnnum =0 
 ########make groups########
 all_sprites_list = pygame.sprite.Group() #group for all objects
 enemies_hit_list = pygame.sprite.Group() #group for all enemies that have been killed

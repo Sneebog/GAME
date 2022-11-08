@@ -8,7 +8,6 @@ from newwavespawner import spawnnewwave
 import random
 #all the classes imported
 from variables import *
-spawnnum =0 
 class Game():
     def __init__(self):
         # Set the height and width of the screen
