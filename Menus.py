@@ -11,7 +11,7 @@ class Menu():
         #allow game to finish
         self.click = False
         #allow for player inputs
-        self.outcome = 0
+        self.outcome = 5
         #To find what is displayed next, e.g. the game runs
         self.menuspriteslist = pygame.sprite.Group() #group for all objects in menu
     def run(self):
@@ -59,10 +59,10 @@ class Menu():
             elif optionsbutton.click == True:
                 self.outcome = 2 #open options menu
             elif quitbutton.click == True:#closes the menu
-                self.outcome = 3
+                self.outcome = 0
 
             #close the screen
-            if self.outcome != 0:
+            if self.outcome != 5:
                 self.done = True
             
             pygame.display.flip()
@@ -150,19 +150,16 @@ class Gameoverscreen(Menu):
                                 button.checkclick(pos[0], pos[1]) #if the mouse is on the buttons position the button will have click set to true
                     #check the buttons that are clicked
                     if replaybutton.click == True:
-                        self.outcome = 1 #game starts
+                        self.outcome = 4 #game starts
                     elif quitbutton.click == True:#closes the game
-                        self.outcome = 3
+                        self.outcome = 0
 
                     #close the screen
-                    if self.outcome != 0:
+                    if self.outcome != 5:
                         self.done = True
                     
                     pygame.display.flip()
 
                     clock.tick(60)
         pygame.quit()
-
-
-gameover = Gameoverscreen()
-gameover.run()
+        return self.outcome

@@ -22,12 +22,16 @@ class Game():
         self.bullettimer = 0
         self.wavenum = 1
         self.timerfps = 0
+        self.outcome = 0
         #determines when to close the game
         self.done = False
-        
+      
+
     def run(self):
         # Initialize the game engine
         pygame.init()
+        
+
         #set the screen
         screen = pygame.display.set_mode(self.size)
         pygame.display.set_caption('Tower defense') #set the caption of the game window
@@ -43,11 +47,20 @@ class Game():
         clock = pygame.time.Clock()
         pygame.mouse.set_visible(False)
         # Loop as long as done == False
-
+        sClick = False
+    
         while not self.done:
             for event in pygame.event.get():  # User did something
                 if event.type == pygame.QUIT:  # If user clicked close
-                    self.done = True  # Flag that we are done so we exit this loo  
+                    self.done = True  # Flag that we are done so we exit this loop
+
+                   
+                # checking if keydown event happened or not
+                if event.type == pygame.KEYDOWN:
+               
+                    if event.key == pygame.K_w:
+                        sClick =  True
+
             mouse_buttons = pygame.mouse.get_pressed()
             screen.fill(WHITE)
             #set the background image
@@ -74,6 +87,8 @@ class Game():
             #Make a new plant based on the location
             if mouse_buttons[0] == True:
                 pointer.createPlant(pos[0], pos[1],TILESIZE)
+            elif sClick == True:
+                pointer.createSPlant(pos[0], pos[1],TILESIZE)
             #spawn new enemies
             if self.timerfps % 12 == 0: 
                 spawnnewwave(self.timerfps)
@@ -91,7 +106,7 @@ class Game():
                 gameovercheck = enemy.gameover()
                 if gameovercheck == True:
                     self.done = True
-
+                    self.outcome = 3
                   
            
             # pygame.sprite.groupcollide(enemies_list, bullets_list, False, True)
@@ -119,10 +134,10 @@ class Game():
                 self.timermin = self.timer // 60
                 self.timersec = self.timer % 60
 
+            sClick = False
             pygame.display.flip()
 
             clock.tick(60)
         # Be IDLE friendly
         pygame.quit()
-game = Game()
-game.run()
+        return self.outcome

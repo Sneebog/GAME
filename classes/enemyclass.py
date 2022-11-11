@@ -4,7 +4,9 @@ import pygame
 class Enemies(Entity):
     def __init__(self, x, y , tilesize):
         super().__init__(x,y, tilesize)
-        self.image.fill(RED)
+        zombie = pygame.image.load('zombie.jpg').convert_alpha()
+        zombie = pygame.transform.scale(zombie, (tilesize, tilesize))
+        self.image = zombie
         self.x_offset = (-0.005) #speed of the enemy, must be negative as the enemy always goes left
         self.health = 100 #total enemy health
 
