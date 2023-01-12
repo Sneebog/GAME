@@ -4,9 +4,10 @@ import pygame
 class Enemies(Entity):
     def __init__(self, x, y , tilesize):
         super().__init__(x,y, tilesize)
-        zombie = pygame.image.load('zombie.jpg').convert_alpha()
+        zombie = pygame.image.load('zombie.png').convert_alpha()
         zombie = pygame.transform.scale(zombie, (tilesize, tilesize))
         self.image = zombie
+        self.image.set_colorkey('white')
         self.x_offset = (-0.005) #speed of the enemy, must be negative as the enemy always goes left
         self.health = 100 #total enemy health
 
@@ -22,5 +23,5 @@ class Enemies(Entity):
         self.x += self.x_offset #make the enemy move at a constant speed
 
     def gameover(self):
-        if self.x * TILESIZE < 30: #if the enemy reaches x = 30 then the game is over and the enemies won
+        if (self.x * TILESIZE) < 20: #if the enemy reaches x = 30 then the game is over and the enemies won
             return True 

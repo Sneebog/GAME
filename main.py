@@ -3,6 +3,7 @@ from Menus import Menu, Gameoverscreen, OptionsMenu
 
 menu = Menu()
 outcome = menu.run()
+
 while outcome != 0:
     if outcome == 1:
         game = Game()
@@ -16,4 +17,3 @@ while outcome != 0:
     elif outcome == 4:
         menu = Menu()
         outcome = menu.run
-    

@@ -7,7 +7,9 @@ class Bullets(Entity):
         self.image = pygame.Surface([width, height])
         self.width = width
         self.height = height
-        self.image.fill(RED) #colour of the bullet
+        bullet = pygame.image.load('pea.png').convert_alpha()
+        bullet = pygame.transform.scale(bullet, (width, height))
+        self.image =bullet 
         self.rect = self.image.get_rect()
         self.x = x
         self.y = y
@@ -17,6 +19,8 @@ class Bullets(Entity):
         self.rect.x=self.x*TILESIZE  #multiply the x and y by tilesize to draw on screen
         self.rect.y=(self.y*TILESIZE) + 50
         self.x += self.x_offset #make the bullet move at a constant speed
+        if self.x > 9:
+            self.kill()
 
 class SunBullets(Bullets):
     def __init__(self, x, y, width, height):

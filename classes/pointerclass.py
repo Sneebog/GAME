@@ -14,39 +14,26 @@ class Pointer(pygame.sprite.Sprite):
     def update(self):
         self.rect.center = pygame.mouse.get_pos() #moves the mouse to the mouses position (the center of it)
 
-    def createPlant(self, mousex, mousey, tilesize):
+    def createPlant(self, mousex, mousey, tilesize, type):
         x = mousex // tilesize #calculate where to place it, uses // to ensure plant fits in the square perfectly 
         y = mousey // tilesize
         squarecheck = True
         #checks if there is already a plant in the square
         
         for placed in plant_list: 
-            if placed.x == x and placed.y == y: 
+            if (placed.x == x) and (placed.y == y): 
                     squarecheck == False
 
         if x == 0 or y == 0: #ensures plants cant be placed on the top or the back line
             squarecheck = False
 
         if squarecheck == True: #Means the plant can be placed there
-            plant = Plants(x, y, tilesize)
-            #plant = Sunflowerplant(x, y, tilesize)
-            plant_list.add(plant)
-            all_sprites_list.add(plant)
-    
-    def createSPlant(self, mousex, mousey, tilesize):
-        x = mousex // tilesize #calculate where to place it, uses // to ensure plant fits in the square perfectly 
-        y = mousey // tilesize
-        squarecheck = True
-        #checks if there is already a plant in the square
-        
-        for placed in plant_list: 
-            if placed.x == x and placed.y == y: 
-                    squarecheck == False
-
-        if x == 0 or y == 0: #ensures plants cant be placed on the top or the back line
-            squarecheck = False
-
-        if squarecheck == True: #Means the plant can be placed there
-            plant = Sunflowerplant(x, y, tilesize)
-            plant_list.add(plant)
-            all_sprites_list.add(plant)
+            if type == "peashooter":
+                plant = Plants(x, y, tilesize)
+                #plant = Sunflowerplant(x, y, tilesize)
+                plant_list.add(plant)
+                all_sprites_list.add(plant)
+            elif type == "sunflower":
+                sunflower = Sunflowerplant(x, y, tilesize)
+                plant_list.add(sunflower)
+                all_sprites_list.add(sunflower)

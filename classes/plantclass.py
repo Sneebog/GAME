@@ -10,7 +10,7 @@ class Plants(Entity):
         super().__init__(x,y, tilesize)
         peashooter = pygame.image.load('peashooter.jpg').convert_alpha()
         peashooter = pygame.transform.scale(peashooter, (tilesize, tilesize))
-        
+
         self.image = peashooter
         self.bullettimer = random.randint(0, 180) #Timer for the plant to constantly shoot bullet
         self.health = 100 # total health for the plant 
@@ -35,14 +35,16 @@ class Plants(Entity):
 
     def shoot(self):
         #bullets creation
-        bullet = Bullets(self.x, self.y, 5, 5) #bullets are created at the plants position   
+        bullet = Bullets(self.x + 0.5, self.y, 10, 10) #bullets are created at the plants position   
         all_sprites_list.add(bullet)
         bullets_list.add(bullet)
 
 class Sunflowerplant(Plants):
     def __init__(self, x, y, tilesize):
         super().__init__(x, y, tilesize)
-        self.image.fill(PURPLE)
+        sunflower = pygame.image.load('flower.png').convert_alpha()
+        sunflower = pygame.transform.scale(sunflower, (tilesize, tilesize))
+        self.image = sunflower
     
     def damage(self):
        super().damage() 

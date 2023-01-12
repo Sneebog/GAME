@@ -16,7 +16,7 @@ class Game():
         self.background = Background("gamebackground.jpg", [0,0])
         self.score = 0
         self.sun = 0
-        self.timer = 120
+        self.timer = 0
         self.timersec = 0
         self.timermin = 0
         self.bullettimer = 0
@@ -48,7 +48,12 @@ class Game():
         pygame.mouse.set_visible(False)
         # Loop as long as done == False
         sClick = False
-    
+            # for i in range(3, 11):
+            # for j in range(1, 7):
+            #     my_background = Background(i*100, j*100, "grass.png")
+            #     background_list.add(my_background)
+            #     all_sprites_list.add(my_background)
+
         while not self.done:
             for event in pygame.event.get():  # User did something
                 if event.type == pygame.QUIT:  # If user clicked close
@@ -86,9 +91,9 @@ class Game():
             pointer.rect.center = pygame.mouse.get_pos()
             #Make a new plant based on the location
             if mouse_buttons[0] == True:
-                pointer.createPlant(pos[0], pos[1],TILESIZE)
+                pointer.createPlant(pos[0], pos[1],TILESIZE, "peashooter" )
             elif sClick == True:
-                pointer.createSPlant(pos[0], pos[1],TILESIZE)
+                pointer.createPlant(pos[0], pos[1],TILESIZE, "sunflower")
             #spawn new enemies
             if self.timerfps % 12 == 0: 
                 spawnnewwave(self.timerfps)
@@ -107,13 +112,6 @@ class Game():
                 if gameovercheck == True:
                     self.done = True
                     self.outcome = 3
-                  
-           
-            # pygame.sprite.groupcollide(enemies_list, bullets_list, False, True)
-            # for bullet in bullets_list:
-            #     if bullet.x > 10:   #so that the bullets can't kill enemies spawning in
-            #         bullet.kill
-
 
             #Make the bullets shoot on timer
             self.bullettimer += 1
@@ -122,15 +120,15 @@ class Game():
                 for plant in plant_list:
                     plant.shoot()
             for sun in sunbullets_list:
-                if sun.timer >= 10:
-                    sun.kill
+                if sun.timer >= 240:
+                    sun.kill()
 
 
             #Timer on the scoreboard
             self.timerfps += 1
             if self.timerfps == 60:
                 self.timerfps = 0 
-                self.timer -= 1
+                self.timer += 1
                 self.timermin = self.timer // 60
                 self.timersec = self.timer % 60
 
