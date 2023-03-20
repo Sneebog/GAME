@@ -1,18 +1,17 @@
 from classes.entityclass import Entity
-from variables import RED, TILESIZE, enemies_hit_list
+from variables import TILESIZE, WHITE
 import pygame
 class Enemies(Entity):
     def __init__(self, x, y , tilesize):
         super().__init__(x,y, tilesize)
-        zombie = pygame.image.load('zombie.png').convert_alpha()
+        zombie = pygame.image.load('zombie.png').convert_alpha() # get the image for the enemy
         zombie = pygame.transform.scale(zombie, (tilesize, tilesize))
-        self.image = zombie
-        self.image.set_colorkey('white')
+        self.image = zombie #apply the image onto the object
         self.x_offset = (-0.005) #speed of the enemy, must be negative as the enemy always goes left
         self.health = 100 #total enemy health
 
     def damage(self,score ):
-        self.health -= 20 
+        self.health -= 25
         if self.health <= 0:#if the enemy is zero health then it is killed 
             self.kill()
             score += 20 # for each enemy killed the score increases for the scoreboard

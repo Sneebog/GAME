@@ -29,7 +29,7 @@ class Menu():
         optionsbutton = Textbuttons(200, 445, 200, 50,GREY, "Options", outfit, RED )
         quitbutton = Textbuttons(200, 515, 200, 50,GREY, "Quit", outfit, RED )
         self.menuspriteslist.add(startbutton, optionsbutton, quitbutton)
-      
+
         while not self.done:
 
             for event in pygame.event.get():  # User did something
@@ -60,11 +60,13 @@ class Menu():
                 self.outcome = 2 #open options menu
             elif quitbutton.click == True:#closes the menu
                 self.outcome = 0
-
+            
             #close the screen
             if self.outcome != 5:
                 self.done = True
-            
+           
+
+
             pygame.display.flip()
 
             clock.tick(60)
@@ -149,11 +151,12 @@ class Gameoverscreen(Menu):
                         for button in self.menuspriteslist: #check every button in list
                                 button.checkclick(pos[0], pos[1]) #if the mouse is on the buttons position the button will have click set to true
                     #check the buttons that are clicked
+
                     if replaybutton.click == True:
                         self.outcome = 4 #game starts
                     elif quitbutton.click == True:#closes the game
                         self.outcome = 0
-
+                    screen.fill(BLACK)
                     #close the screen
                     if self.outcome != 5:
                         self.done = True
